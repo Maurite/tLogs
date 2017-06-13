@@ -140,10 +140,12 @@ PlayerState(stateid)
 // Connection Logs
 public OnPlayerConnect(playerid)
 {
+	new pIP[16];
 	GetPlayerName(playerid,pName[playerid],MAX_PLAYER_NAME);
+	GetPlayerIp(playerid,pIP,16);
 	if(IsPlayerNPC(playerid)) return 1;
 	new sLog[156];
-	format(sLog,sizeof sLog,"[%s] %s(%d) logged in .\r\n",TimeStamp(),pName[playerid],playerid);
+	format(sLog,sizeof sLog,"[%s] %s(%d) logged in. IP %s .\r\n",TimeStamp(),pName[playerid],playerid,pIP);
 	fwrite(connection,sLog);
 	return 1;
 }
