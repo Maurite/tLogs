@@ -10,7 +10,7 @@
 #define FILTERSCRIPT
 #if defined FILTERSCRIPT
 
-//#define FILEPPATH "/folder/" // Uncomment this if you want the files to be in other folder inside the scriptfiles folder. (replace folder with the folder's name. The folder MUST exist.)
+//#define FILEPATH "/folder/" // Uncomment this if you want the files to be in other folder inside the scriptfiles folder. (replace folder with the folder's name. The folder MUST exist.)
 
 new File:chat, File:actions, File:connection, File:combat, pName[MAX_PLAYERS][MAX_PLAYER_NAME],currentday;
 
