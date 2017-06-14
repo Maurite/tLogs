@@ -156,12 +156,12 @@ public OnPlayerDisconnect(playerid, reason)
 	switch(reason)
 	{
 		case 0:	sReason = "Timeout/Crash";
-		case 1:	sReason = "Salió";
+		case 1:	sReason = "Salio";
 		case 2:	sReason = "Kick/Ban";
 	}
 	
 	new sLog[156];
-	format(sLog,sizeof sLog,"[%s] %s(%d) se ha desconectado. Razón: %s .\r\n",TimeStamp(),pName[playerid],playerid,sReason);
+	format(sLog,sizeof sLog,"[%s] %s(%d) se ha desconectado. Razon: %s .\r\n",TimeStamp(),pName[playerid],playerid,sReason);
 	fwrite(connection,sLog);
 
 	return 1;	
@@ -178,7 +178,7 @@ public OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY
 			if(IsPlayerConnected(hitid))
 			{
 				new sLog[156];
-				format(sLog,sizeof sLog,"[%s] %s(%d) dañó el vehiculo id (%d) con el arma id (%d) .\r\n",TimeStamp(),pName[playerid],playerid,hitid,weaponid);
+				format(sLog,sizeof sLog,"[%s] %s(%d) le bajo vida al vehiculo id (%d) con el arma id (%d) .\r\n",TimeStamp(),pName[playerid],playerid,hitid,weaponid);
 				fwrite(combat,sLog);
 			}
 		}
@@ -204,13 +204,13 @@ public OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid, bodypart)
 	if(issuerid != INVALID_PLAYER_ID)
 	{
 		new sLog[156];
-		format(sLog,sizeof sLog,"[%s] %s(%d) dañó a %s(%d) con el arma id (%d) . Daño (%0.2f) . Parte del Cuerpo: %s .\r\n",TimeStamp(),pName[issuerid],issuerid,pName[playerid],playerid,weaponid,sPart,amount);
+		format(sLog,sizeof sLog,"[%s] %s(%d) le bajo vida a %s(%d) con el arma id (%d) . Cantidad (%0.2f) . Parte del Cuerpo: %s .\r\n",TimeStamp(),pName[issuerid],issuerid,pName[playerid],playerid,weaponid,sPart,amount);
 		fwrite(combat,sLog);
 	}
 	else
 	{
 		new sLog[156];
-		format(sLog,sizeof sLog,"[%s] %s(%d) tomó (%0.2f) de daño. Parte del Cuerpo: %s . Razón ID: %d .\r\n",TimeStamp(),pName[playerid],playerid,amount,sPart,weaponid);
+		format(sLog,sizeof sLog,"[%s] %s(%d) sufrio una baja de (%0.2f) de de vida. Parte del Cuerpo: %s . Razon ID: %d .\r\n",TimeStamp(),pName[playerid],playerid,amount,sPart,weaponid);
 		fwrite(combat,sLog);		
 	}
 	return 1;
@@ -221,13 +221,13 @@ public OnPlayerDeath(playerid, killerid, reason)
 	if(killerid != INVALID_PLAYER_ID)
 	{
 		new sLog[156];
-		format(sLog,sizeof sLog,"[%s] %s(%d) mató a %s(%d). Razón: %d .\r\n",TimeStamp(),pName[killerid],killerid,pName[playerid],playerid,reason);
+		format(sLog,sizeof sLog,"[%s] %s(%d) mato a %s(%d). Razon: %d .\r\n",TimeStamp(),pName[killerid],killerid,pName[playerid],playerid,reason);
 		fwrite(combat,sLog);
 	}
 	else
 	{
 		new sLog[156];
-		format(sLog,sizeof sLog,"[%s] %s(%d) murió. Razón: %d .\r\n",TimeStamp(),pName[playerid],playerid,reason);
+		format(sLog,sizeof sLog,"[%s] %s(%d) murio. Razon: %d .\r\n",TimeStamp(),pName[playerid],playerid,reason);
 		fwrite(combat,sLog);
 	}
 	return 1;
@@ -238,7 +238,7 @@ public OnVehicleDeath(vehicleid, killerid)
 	if(killerid != INVALID_PLAYER_ID && IsPlayerConnected(killerid))
 	{
 		new sLog[156];
-		format(sLog,sizeof sLog,"[%s] %s(%d) destruyó el vehiculo id (%d) .\r\n",TimeStamp(),pName[killerid],killerid,vehicleid);
+		format(sLog,sizeof sLog,"[%s] %s(%d) destruyo el vehiculo id (%d) .\r\n",TimeStamp(),pName[killerid],killerid,vehicleid);
 		fwrite(combat,sLog);	
 	}
 	return 1;
@@ -259,7 +259,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 {
 	if(IsPlayerNPC(playerid)) return 1;
 	new sLog[156];
-	format(sLog,sizeof sLog,"[%s] %s(%d) ejecutó el comando: %s .\r\n",TimeStamp(),pName[playerid],playerid,cmdtext);
+	format(sLog,sizeof sLog,"[%s] %s(%d) ejecuto el comando: %s .\r\n",TimeStamp(),pName[playerid],playerid,cmdtext);
 	fwrite(chat,sLog);		
 	return 0;
 }
@@ -271,7 +271,7 @@ public OnPlayerStateChange(playerid, newstate, oldstate)
 {
 	if(IsPlayerNPC(playerid)) return 1;
 	new sLog[156];
-	format(sLog,sizeof sLog,"[%s] %s(%d) cambió del estado %s al estado %s .\r\n",TimeStamp(),pName[playerid],playerid,PlayerState(oldstate),PlayerState(newstate));
+	format(sLog,sizeof sLog,"[%s] %s(%d) cambio del estado %s al estado %s .\r\n",TimeStamp(),pName[playerid],playerid,PlayerState(oldstate),PlayerState(newstate));
 	fwrite(actions,sLog);	
 	return 1;
 }
@@ -279,7 +279,7 @@ public OnPlayerStateChange(playerid, newstate, oldstate)
 public OnPlayerInteriorChange(playerid, newinteriorid, oldinteriorid)
 {
 	new sLog[156];
-	format(sLog,sizeof sLog,"[%s] %s(%d) cambió del interior %d al interior %d .\r\n",TimeStamp(),pName[playerid],playerid,oldinteriorid,newinteriorid);
+	format(sLog,sizeof sLog,"[%s] %s(%d) cambio del interior %d al interior %d .\r\n",TimeStamp(),pName[playerid],playerid,oldinteriorid,newinteriorid);
 	fwrite(actions,sLog);	
 	return 1;
 }
@@ -289,8 +289,8 @@ public OnEnterExitModShop(playerid, enterexit, interiorid)
 	new sLog[156],sEnterExit[8];
 	switch(enterexit)
 	{
-		case 1: sEnterExit = "entró";
-		case 0: sEnterExit = "salió";
+		case 1: sEnterExit = "entro";
+		case 0: sEnterExit = "salio";
 	}
 	
 	format(sLog,sizeof sLog,"[%s] %s(%d) %s a/de un mod shop interior %d .\r\n",TimeStamp(),pName[playerid],playerid,sEnterExit,interiorid);
@@ -301,7 +301,7 @@ public OnEnterExitModShop(playerid, enterexit, interiorid)
 public OnPlayerClickMap(playerid, Float:fX, Float:fY, Float:fZ)
 {
 	new sLog[156];
-	format(sLog,sizeof sLog,"[%s] %s(%d) clickeó su mapa en las coordenadas X:%0.4f Y:%0.4f Z:0.4f .\r\n",TimeStamp(),pName[playerid],playerid,fX,fY,fZ);
+	format(sLog,sizeof sLog,"[%s] %s(%d) clickeo su mapa en las coordenadas X:%0.4f Y:%0.4f Z:0.4f .\r\n",TimeStamp(),pName[playerid],playerid,fX,fY,fZ);
 	fwrite(actions,sLog);	
 	return 1;
 }
@@ -309,7 +309,7 @@ public OnPlayerClickMap(playerid, Float:fX, Float:fY, Float:fZ)
 public OnPlayerClickPlayer(playerid, clickedplayerid, source)
 {
 	new sLog[156];
-	format(sLog,sizeof sLog,"[%s] %s(%d) clickeó al jugador %s(%d) en la tabla de scores .\r\n",TimeStamp(),pName[playerid],playerid,pName[clickedplayerid],clickedplayerid);
+	format(sLog,sizeof sLog,"[%s] %s(%d) clickeo al jugador %s(%d) en la tabla de scores .\r\n",TimeStamp(),pName[playerid],playerid,pName[clickedplayerid],clickedplayerid);
 	fwrite(actions,sLog);	
 	return 1;
 }
